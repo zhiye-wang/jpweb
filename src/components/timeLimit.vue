@@ -12,12 +12,13 @@
 				</div>
 			</div>
 			<div class="mask"></div>
-			<div class="tangle"></div>
-			
+			<div class="tangle"></div>		
 		</div>
 		<p class="distance">--离本场结束只剩{{havedate}}</p>
-		<ul>
-			<router-link v-for="data in datalist" tag="li" to="/detail/:data.goods_id" class="clear" :key="data.id">
+		<ul v-infinite-scroll="loadMore"
+  			infinite-scroll-disabled="loading"
+  			infinite-scroll-distance="10">
+			<router-link v-for="data in datalist" tag="li" :to="'/detail/'+data.goods_id"class="clear" :key="data.id">
 				<img :src="data.pic_url" alt="">
 				<div class="right">
 					<p class="intro">{{data.title_long}}</p>
@@ -31,6 +32,7 @@
 					</div>
 				</div>
 			</router-link>
+			<p>{{complete}}</p>
 		</ul>
 	</div>
 </template>
@@ -57,7 +59,7 @@
 
 	Vue.directive("hadmask",{
 		inserted(el,binding){
-			console.log(binding.value)
+			//console.log(binding.value)
 			el.style.width = binding.value*140+'px'
 			el.style.background="red"
 		}
@@ -70,19 +72,38 @@
 				timelist:[10,14,20,10,14,20],
 				havedate:0,
 				datalist:[],
-				percent:0
+				percent:0,
+				count:0,
+				loading:false,
+				total:0,
+				complete:"正在加载中..."
 			}
 		},
 		methods:{
 			mousedown(evt){
 				
+			},
+			loadMore(){
+				console.log("daodile");
+				this.count++;
+				if(this.count>2){
+					this.complete = "切换到下一场";
+					this.loading = true
+					return ;
+				}
+				axios.get("/act/timebuy-xrgoodslist").then(res=>{
+					this.datalist =[...this.datalist,...res.data.data.time_tabs[this.count].goodslist] 
+				}).catch(err=>{
+					console.log(err);
+				})
 			}
 		},
 		mounted(){
 			axios.get("/act/timebuy-xrgoodslist").then(res=>{
 				
 				this.datalist = res.data.data.time_tabs[0].goodslist
-				console.log(this.datalist)
+				this.total = res.data.data.time_tabs.length
+				//console.log(this.datalist)
 			}).catch(err=>{
 				console.log(err);
 			})

@@ -8,6 +8,10 @@ import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
+import { InfiniteScroll } from 'mint-ui';
+
+Vue.use(InfiniteScroll);
+
 
 Vue.use(ElementUI);
 
