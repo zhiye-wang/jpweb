@@ -1,6 +1,9 @@
 <template>
-	<div>
-		购物车
+	<div class="shopping">
+		
+		<div class="shopping_cart">
+			
+		</div>
 	</div>
 </template>
 
@@ -9,3 +12,8 @@
 		name:'shoppingcart'
 	}
 </script>
+<style>
+	.shopping_cart{
+
+	}
+</style>

@@ -18,6 +18,8 @@ import weiyi from '../components/weiyi.vue'
 import jeans from '../components/jeans.vue'
 import jiake from '../components/jiake.vue'
 import timeLimit from '../components/timeLimit.vue'
+import Login from '../components/login.vue'
+import mobileLogin from '../components/mobileLogin.vue'
 
 Vue.use(Router)
 
@@ -88,6 +90,19 @@ export default new Router({
     },{
       path:'/timeLimit',
       component:timeLimit
+    },,{
+      path:'/login',
+      component:Login,
+      children:[
+        {
+        path:'mobileLogin',
+        component:mobileLogin
+      },
+      {
+        path:'mobileLogin',
+        component:mobileLogin
+      }
+      ]
     }
   ]
 })
