@@ -20,7 +20,8 @@ module.exports = {
             target:"https://webservice.juanpi.com",
             host:"webservice.juanpi.com",
             changeOrigin:true
-        }
+        },
+        
        
     },
 
