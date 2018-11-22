@@ -17,6 +17,7 @@ import maoshan from '../components/maoshan.vue'
 import weiyi from '../components/weiyi.vue'
 import jeans from '../components/jeans.vue'
 import jiake from '../components/jiake.vue'
+import timeLimit from '../components/timeLimit.vue'
 
 Vue.use(Router)
 
@@ -84,6 +85,9 @@ export default new Router({
     },{
       path:'/jiake',
       component:jiake
+    },{
+      path:'/timeLimit',
+      component:timeLimit
     }
   ]
 })
