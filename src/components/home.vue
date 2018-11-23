@@ -22,12 +22,25 @@
 			</div>	
 				
 			<div class="main-nav">
-				
-					<img src="https://goods4.juancdn.com/jas/181119/7/6/5bf2524bb6f8ea534d206f83_270x241.png?imageMogr2/quality/85!/format/png" alt="">
+				<ul>
+					<li> 
+						<img src="https://goods4.juancdn.com/jas/181119/7/6/5bf2524bb6f8ea534d206f83_270x241.png?imageMogr2/quality/85!/format/png" alt="">
+					</li>
+					<router-link  to="/timeLimit" tag="li"> 
+						<img src="https://goods8.juancdn.com/jas/180530/f/e/5b0e68b4b6f8ea11b8424b37_270x241.png?imageMogr2/quality/85!/format/png" alt="">
+					</router-link>
+					<li> 
+						<img src= "https://goods2.juancdn.com/jas/180201/3/d/5a727415a9fcf8280d24465a_270x241.png?imageMogr2/quality/85!/format/png" alt="">
+					</li>
+					<li> 
+						<img src= "https://goods4.juancdn.com/jas/180917/6/5/5b9f175033b08945a870ad21_270x241.png?imageMogr2/quality/85!/format/png" alt="">
+					</li>
+				</ul>
 					
-					<img src="https://goods8.juancdn.com/jas/180530/f/e/5b0e68b4b6f8ea11b8424b37_270x241.png?imageMogr2/quality/85!/format/png" alt="">
-					<img src= "https://goods2.juancdn.com/jas/180201/3/d/5a727415a9fcf8280d24465a_270x241.png?imageMogr2/quality/85!/format/png" alt="">
-					<img src= "https://goods4.juancdn.com/jas/180917/6/5/5b9f175033b08945a870ad21_270x241.png?imageMogr2/quality/85!/format/png" alt="">
+					
+					
+					
+					
 				
 			</div>
 			<div class="guanggao">
@@ -46,16 +59,31 @@
 			</div>
 			<div class="shangpin">
 				<div>
-					<span @click="handleClick()">精选专场</span>
-					<span @click="handleClick1()">精选单品</span>
-					<ul>
-						<li v-for="data1 in datalist1">
+					<span @click="handleClick()" :class="{'active':a===true}">精选专场</span>
+					<span @click="handleClick1()" :class="{'active':b===true}">精选单品</span>
+					<ul v-if="isShow"  v-infinite-scroll="loadMore"
+  infinite-scroll-disabled="loading"
+  infinite-scroll-immediate-check= "false"
+  infinite-scroll-distance="300">
+						<router-link to="/detail/:id" tag="li" v-for="data1 in datalist1" :key="data1.goods_id">
 							<img :src="data1.pic_url" alt="">
 							<p v-if="data1.coupon_tips">{{data1.coupon_tips}}</p>
 							<p v-else>{{data1.priceList[0].text}}</p>
 							<!-- <p v-else>{{data1.priceList[0].text}}</p> -->
 							<p class="shangpin-title" >{{data1.title}}</p>
-						</li>
+						</router-link>
+					</ul>
+					<ul v-else="isShow"  v-infinite-scroll="loadMore"
+  infinite-scroll-disabled="loading"
+  infinite-scroll-immediate-check= "false"
+  infinite-scroll-distance="300">
+						<router-link to="/detail/:id" tag="li" v-for="data1 in datalist1" :key="data1.goods_id">
+							<img :src="data1.pic_url" alt="">
+							<p v-if="data1.coupon_tips">{{data1.coupon_tips}}</p>
+							<p v-else>{{data1.priceList[0].text}}</p>
+							<!-- <p v-else>{{data1.priceList[0].text}}</p> -->
+							<p class="shangpin-title" >{{data1.title}}</p>
+						</router-link>
 					</ul>
 				</div>
 				
@@ -63,22 +91,22 @@
 		</main>
 		<footer id="footer">
 			<ul>
-				<li>
+				<li class="my">
 					<i class="iconfont icon-index"></i>	
 					<p>首页</p>
 				</li>
-				<li> 
+				<router-link to="/sidebar" tag="li"> 
 					<i class="iconfont icon-leimupinleifenleileibie"></i>	
 					<p>分类</p>
-				</li>
-				<li> 
+				</router-link>
+				<router-link to="/shoppingcart" tag="li"> 
    					<i class="iconfont icon-gouwuche1"></i>	
 					<p>购物车</p>
-				</li>
-				<li> 
+				</router-link>
+				<router-link to="/mine" tag="li"> 
 					<i class="iconfont icon-wodedangxuan"></i>	
 					<p>我的</p> 
-				</li>
+				</router-link>
 			</ul>	
 		</footer>	
 	</div>
@@ -91,16 +119,25 @@ import Swiper from 'swiper'
 //require('vue-swipe/dist/vue-swipe.css');
 import "swiper/dist/css/swiper.css";
 //import { Swipe, SwipeItem} from 'vue-swipe'
+
 	export default {
 		name:'home',
 		data(){
 			return{
 			datalist1:[],
-			datalist:[]
+			datalist:[],
+			current:1,
+			isShow:true,
+			a:true,
+			b:false
 			}
 		},
 		methods:{
 			handleClick(){
+				this.isShow=true;
+				this.current=1;
+				this.a=true;
+				this.b=false;
 				axios.get('/api/getIndexNavSkip?page=1&zy_ids=p8_c4_l4&app_name=zhe&catname=newest_zhe').then(res=>{
 				
 				this.datalist1=res.data.GoodsRes.goods
@@ -110,13 +147,29 @@ import "swiper/dist/css/swiper.css";
 			})
 			},
 			handleClick1(){
+				this.isShow=false;
+				this.current=1;
+				this.b=true;
+				this.a=false;
 				axios.get('/api/getGoods?page=1&zy_ids=p8_c4_l4&app_name=zhe&catname=tab_hpdp&flag=tab_hpdp').then(res=>{
 				
 				this.datalist1=res.data.data.goods
+				console.log(this.datalist1)
 			}).catch((error)=>{
 
 			})
-			}
+			},
+			loadMore(){
+		      
+
+		      this.current++;
+
+		      axios.get(`/api/getIndexNavSkip?page=${this.current}&zy_ids=p8_c4_l4&app_name=zhe&catname=newest_zhe`).then(res=>{
+		        console.log(res.data);
+
+		        this.datalist1 = [...this.datalist1,...res.data.GoodsRes.goods] //合并数组
+		      })
+		    }
 		},
 		mounted(){ 
 			axios.get('/api/getIndexFirstPaintInfo?cid=&zy_ids=p8_c4_l4&app_name=zhe&app_version=&platform=&catname=newest_zhe').then(res=>{
@@ -193,12 +246,14 @@ import "swiper/dist/css/swiper.css";
 			}
 		}
 		.main-nav{
-			display: flex;
-			justify-content:space-around;
 			
-				img{
-					width:90px;
-					height:80px;
+				ul{
+					display: flex;
+					justify-content:space-around;
+					img{
+						width:90px;
+						height:80px;
+					}
 				}
 				
 			
@@ -247,7 +302,12 @@ import "swiper/dist/css/swiper.css";
 			background:#999;
 		}
 		.shangpin{
-			li{
+			.active{
+				color:red;
+				border-bottom:2px red solid;
+			}
+			ul{
+				li{
 				height:200px;
 				width:165px;
 				float:left;
@@ -265,6 +325,8 @@ import "swiper/dist/css/swiper.css";
 					color:black;
 				}
 			}
+			}
+			
 		}
 	}
   
@@ -281,7 +343,9 @@ import "swiper/dist/css/swiper.css";
 		ul{
 			display: flex;
 			justify-content: space-around;
-
+			.my{
+				background:red;
+			}
 		}
 	}
 
