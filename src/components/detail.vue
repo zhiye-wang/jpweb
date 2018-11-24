@@ -81,6 +81,7 @@
 	import axios from "axios"
 	/*import Swiper from "swiper"
 	import "swiper/dist/css/swiper.css"*/
+	import {getCookie} from "../module/cookie.js"
 	export default {
 		name:'detail',
 		data(){
@@ -95,6 +96,7 @@
 		},
 		mounted(){
 			this.id=this.$route.params.id
+			console.log("now",getCookie())
 			/*axios.get("/ddd/shoppingcart").then(res=>{
 				console.log("res")
 				console.log(res)
@@ -135,7 +137,7 @@
 				
 
 				axios.post('/ddd/shoppingcart',{
-					username:"hanhan",
+					username:getCookie(),
 					img:this.imgsrc,
 					price:this.data.cprice,
 					name:this.name,

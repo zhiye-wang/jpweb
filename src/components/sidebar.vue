@@ -43,7 +43,7 @@
    			<i class="iconfont icon-RFQ"></i>
   			<span>购物车</span>
   		</router-link>
-  		<router-link tag="li" to="/my" activeClass="active">  			
+  		<router-link tag="li" to="/mine" activeClass="active">  			
   			<i class="iconfont icon-bussinessman"></i>
   			<span>我的卷皮</span>
   		</router-link>
