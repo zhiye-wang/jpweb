@@ -1,14 +1,17 @@
 function getCookie(){
     var username = decodeURIComponent(document.cookie);
     var array = username.split('; ');
+    console.log("test",array[2])
     var array_value;
-    for(var i = 0;i<array.length ;i++){
-        array_value =  array[i].split('=');
-        /*if(array_value[0] === name){
-            return array_value[1];
-        }*/
-    }
-    return array_value[0];
+    array_value =  array[2].split('=');
+    // for(var i = 0;i<array.length ;i++){
+    //     array_value =  array[i].split('=');
+    //     /*if(array_value[0] === name){
+    //         return array_value[1];
+    //     }*/
+    // }
+
+    return array_value[1];
 }
 
 function setCookie(name,value,path,day){

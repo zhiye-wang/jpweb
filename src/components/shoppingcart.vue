@@ -3,7 +3,8 @@
 	<div class="shopping">
 		
 		<div class="shopping_title">
-			<router-link :to="-1" tag="span">返回</router-link>
+
+			<span @click="backs()">返回</span>
 			购物车
 			<span>编辑</span>
 		</div>
@@ -43,13 +44,14 @@
 			
 			 <p>总金额：{{computedSum}}</p>	
 
-			 <router-link to="a" tag="div">去结算</router-link>
+			 <router-link to="/jeans" tag="div">去结算</router-link>
 		</div>
 	</div>
 </template>
 
 <script>
 	import axios from "axios"; 
+	import {getCookie} from "../module/cookie.js"
 	export default {
 		name:'shoppingcart',
 
@@ -86,6 +88,9 @@
 				singleSelect(){
 					this.checkgroup.length==this.datalist.length?this.checkgroup=[]:this.checkgroup=this.datalist
 				},
+				backs(){
+					this.$router.go(-1)
+				}
 			},
 			computed:{
 				computedSum(){
@@ -99,7 +104,7 @@
 			},
 			mounted(){
 
-				axios.post("ddd/getshoppingcart",{username:"Cinda"}).then(res=>{
+				axios.post("ddd/getshoppingcart",{username:getCookie()}).then(res=>{
 		        	console.log(res.data)
 		        	
 		        	this.datalist = res.data

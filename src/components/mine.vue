@@ -7,7 +7,7 @@
 			</div>
 			<div class="userBtm">
 				<!-- <router-link to="/register" tag="a" >注册</router-link> -->
-				<a href="http://10.2.157.108:3000/register">注册</a>
+				<a href="/register">注册</a>
 				<span>|</span>
 				<router-link to="/login" tag="a" >登录</router-link>
 			</div>
@@ -53,11 +53,11 @@
 		<div class="footer">
 
 			<div class="fotter_info">
-				<router-link  to="home" class="iconfont icon-rfq" tag="p"></router-link>
+				<router-link  to="/home" class="iconfont icon-rfq" tag="p"></router-link>
 				<span>首页</span>
 			</div>
 			<div class="fotter_info">
-				<router-link  to="timeLimit" class="iconfont icon-viewgallery" tag="p"></router-link>
+				<router-link  to="/sidebar" class="iconfont icon-viewgallery" tag="p"></router-link>
 				<span>分类</span>
 			</div>
 			<div class="fotter_info">

@@ -20,7 +20,7 @@
 	     	<br>
 	     	<br>
 
-	     	<input name="textfield" type="text" v-model="password" value="密码" onfocus="if (value =='密码'){value =''}"onblur="if (value ==''){value='密码'}"/>
+	     	<input name="textfield" type="password" v-model="password" value="密码" onfocus="if (value =='密码'){value =''}"onblur="if (value ==''){value='密码'}"/>
 	     	<br>
 
 	        <mt-button type="danger" @click="login()">登录</mt-button>
@@ -40,6 +40,7 @@
 <script>
 import axios from "axios";
 /*引用移动ui*/
+import {getCookie,setCookie} from "../module/cookie.js"
 
 
 export default {
@@ -57,6 +58,8 @@ export default {
     login(){
         axios.post("ddd/login",{username:this.username,password:this.password}).then(res=>{
         	console.log("11111",res)
+        	setCookie("username",this.username);
+        	location.href="/home"
      	
 	    }).catch(err=>{
    	 		console.log(err,"222222")

@@ -17,7 +17,7 @@ import { InfiniteScroll } from 'mint-ui';
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 
-
+// import {getCookie,setCookie} from "./module/cookie.js"
 
 
 //懒加载

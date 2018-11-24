@@ -41,14 +41,14 @@
 		<footer>
 			<div class="footfirst">
 				<i class="iconfont icon-store"></i>
-				<p>首页</p>
+				<p @click="return_home">首页</p>
 			</div>
 			<div class="footsecond">
 				<i class="iconfont icon-cart"></i>
 				<p>购物车</p>
 			</div>
 			<div class="footthird">
-				<p>立即购买</p>
+				<p @click="handleclick">立即购买</p>
 			</div>
 
 			
@@ -91,6 +91,7 @@
 				name:null,
 				imgsrc:null,
 				showing:false,
+				
 				num:0,
 				username:null
 			}
@@ -132,12 +133,14 @@
 		methods:{
 			handleclick(){
 				this.showing = true
+				
 			},
 			notshowing(){
 				this.showing = false
 			},
 			confirm(){
 				console.log("button")
+
 
 				/*axios.get('/ddd/shoppingcart').then(res=>{
 					console.log("res")
@@ -146,11 +149,12 @@
 					console.log(err);
 				})*/
 
+
 				
 
 
 				axios.post('/ddd/shoppingcart',{
-					username:"hanhan",
+					username:getCookie(),
 					img:this.imgsrc,
 					price:this.data.cprice,
 					name:this.name,
@@ -160,6 +164,7 @@
 				}).catch(err=>{
 					console.log(err);
 				})
+				location.href="/shoppingcart"
 			},
 			adding(){
 				this.num++;
@@ -171,6 +176,9 @@
 					this.num--;
 				}
 				
+			},
+			return_home(){
+				location.href="/home"
 			}
 		}
 	}
