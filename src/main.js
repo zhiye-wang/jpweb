@@ -4,17 +4,30 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+//pc端ui注册
+/*import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';*/
 
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
-
+//懒加载 引入
 import { InfiniteScroll } from 'mint-ui';
 
+
+//移动端ui引入
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
+
+
+
+
+//懒加载
 Vue.use(InfiniteScroll);
+//移动端ui注册
+Vue.use(MintUI)
 
 
-Vue.use(ElementUI);
 
+/*Vue.use(ElementUI);
+*/
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

@@ -91,12 +91,11 @@ export default new Router({
     },{
       path:'/timeLimit',
       component:timeLimit
-    },{
-      path:'/login',
+    },{      path:'/login',
       component:Login
     },{
-      path:'/register',
-      component:register
+    	path:'/register',
+    	component:register
     }
   ]
 })
