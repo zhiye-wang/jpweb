@@ -19,6 +19,8 @@ import jeans from '../components/jeans.vue'
 import jiake from '../components/jiake.vue'
 import timeLimit from '../components/timeLimit.vue'
 import Login from '../components/login.vue'
+import register from '../components/register.vue'
+
 
 Vue.use(Router)
 
@@ -89,9 +91,12 @@ export default new Router({
     },{
       path:'/timeLimit',
       component:timeLimit
-    },,{
+    },{
       path:'/login',
       component:Login
+    },{
+      path:'/register',
+      component:register
     }
   ]
 })

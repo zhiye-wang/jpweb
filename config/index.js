@@ -20,6 +20,11 @@ module.exports = {
             target:"https://webservice.juanpi.com",
             host:"webservice.juanpi.com",
             changeOrigin:true
+        },
+        "/ddd":{
+            target:"http://10.2.157.108:3000",
+            host:"10.2.157.108:3000",
+            changeOrigin:true
         }
        
     },
