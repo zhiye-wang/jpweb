@@ -1,6 +1,6 @@
 <template>
 	<div class="main">
-
+		<img :src="imgsrc" alt="">
 		<div class="intro">
 			<p class="price">￥
 				<span class="nowprice">{{data.cprice}}</span>
@@ -9,7 +9,6 @@
 				<span class="number">{{data.join_number}}</span>
 			</p>
 			<p class="langname">{{name}}</p>
-			
 		</div>
 
 		<div class="promise clear">
@@ -51,7 +50,9 @@
 			<div class="footthird">
 				<p>立即购买</p>
 			</div>
-			<div class="footfour">	<div v-if="showing" class="mainhandle">
+
+			
+			<div v-if="showing" class="mainhandle">
 				<div class="handle">
 					<div class="first">
 						<img :src="imgsrc" alt="">
@@ -69,7 +70,8 @@
 			</div>
 
 
-			<div class="footfour">				<p @click="handleclick">加入购物车</p>
+			<div class="footfour">
+				<p @click="handleclick">加入购物车</p>
 			</div>
 		</footer>
 	</div>
@@ -84,16 +86,25 @@
 		data(){
 			return {
 				data:{},
-				
+				id:"90166308",
 				name:null,
 				imgsrc:null,
-					showing:false,
-				num:0			}
+				showing:false,
+				num:0
+			}
 		},
 		mounted(){
-this.id=this.$route.params.idaxios.get("/api/getMemberAboutInfo?goods_id="+this.id).then(res=>{
-				console.log(res.data.skudata)				this.data = res.data.skudata.info;
-				
+			this.id=this.$route.params.id
+			/*axios.get("/ddd/shoppingcart").then(res=>{
+				console.log("res")
+				console.log(res)
+			}).catch(err=>{
+				console.log("err");
+				console.log(err)
+			})*/
+			axios.get("/api/getMemberAboutInfo?goods_id="+this.id).then(res=>{
+				console.log(res.data.skudata)
+				this.data = res.data.skudata.info;
 			}).catch(err=>{
 				console.log(err)
 			})
@@ -121,6 +132,8 @@ this.id=this.$route.params.idaxios.get("/api/getMemberAboutInfo?goods_id="+this.
 			},
 			confirm(){
 				console.log("button")
+				
+
 				axios.post('/ddd/shoppingcart',{
 					username:"hanhan",
 					img:this.imgsrc,
@@ -148,7 +161,6 @@ this.id=this.$route.params.idaxios.get("/api/getMemberAboutInfo?goods_id="+this.
 	}
 </script>
 <style scoped lang="scss">
-
 .main{
 	background:#e2e4e7;
 }
@@ -185,7 +197,6 @@ this.id=this.$route.params.idaxios.get("/api/getMemberAboutInfo?goods_id="+this.
 		.langname{
 			line-height:20px;
 		}
-		
 	}
 	footer{
 		width:100%;
@@ -194,7 +205,6 @@ this.id=this.$route.params.idaxios.get("/api/getMemberAboutInfo?goods_id="+this.
 		position:fixed;
 		left:0;
 		bottom:0;
-
 		.footfirst,.footsecond,.footthird,.footfour{
 			float:left;
 			text-align:center;

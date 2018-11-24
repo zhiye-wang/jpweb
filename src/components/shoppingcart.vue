@@ -3,6 +3,7 @@
 	<div class="shopping">
 		
 		<div class="shopping_title">
+			<router-link :to="-1" tag="span">返回</router-link>
 			购物车
 			<span>编辑</span>
 		</div>
@@ -10,7 +11,7 @@
 
 			<li v-for="data,index in datalist"  :key="data.id">
 				<div class="shopping_shop">  
-					{{data}}	
+						
 				</div>
 
 				<div class="goods_info">
@@ -42,7 +43,7 @@
 			
 			 <p>总金额：{{computedSum}}</p>	
 
-			 <router-link to="a" tag="div">去结算()</router-link>
+			 <router-link to="a" tag="div">去结算</router-link>
 		</div>
 	</div>
 </template>
@@ -59,34 +60,7 @@
 				checkgroup:[],
 				
 				sum:0,
-				datalist:[
-					{
-                  name:"商品1",
-                  price:10,
-                  number:1,
-                  id:"1"
-                },
-                {
-                  name:"商品1",
-                  price:10,
-                  number:1,
-                  id:"2"
-                },
-                {
-                  name:"商品1",
-                  price:10,
-                  number:1,
-                  id:"3"
-                },
-                {
-                  name:"商品1",
-                  price:10,
-                  number:1,
-                  id:"4"
-                }
-
-
-				],
+				datalist:[],
 				
 
 			}
@@ -95,13 +69,13 @@
 		methods:{
 					
 				add(index){
-					console.log('+++')
+					
 					this.datalist[index].number++
 					
 				
 				},
 				reduce(index){
-					console.log('---')	
+					
 					this.datalist[index].number--	
 					if(this.datalist[index].number<=1){
 						this.datalist[index].number=1
@@ -123,17 +97,18 @@
 					return sum
 				}
 			},
-			/*mounted(){
-						axios.post("ddd/getshoppingcart",{username:"Cinda"}).then(res=>{
-				        	console.log(res.data)
-				        	
-				        	this.datalist = res.data
-				        	
-				        	
-					    }).catch(err=>{
-				   	 		console.log(err,"222222")
-				   	 	})
-			},*/
+			mounted(){
+
+				axios.post("ddd/getshoppingcart",{username:"Cinda"}).then(res=>{
+		        	console.log(res.data)
+		        	
+		        	this.datalist = res.data
+		        	
+		        	
+			    }).catch(err=>{
+		   	 		console.log(err,"222222")
+		   	 	})
+			},
 		
 	}
 
@@ -158,9 +133,12 @@
 			line-height:56px;
 			z-index:10;
 			background:white;
+			display:flex;
+			flex-direction:row;
+			justify-content:space-between;
+			align-items:center;
 			span{
-				position:absolute;
-				right:0;
+				
 				font-size:20px;
 			}		
 		}
@@ -209,7 +187,7 @@
 					display:flex;
 					flex-direction:column;
 					justify-content:space-around;
-					border:1px solid red;
+					/*	*/
 					.goods_num_pri{
 
 						display:flex;

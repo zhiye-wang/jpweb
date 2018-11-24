@@ -57,10 +57,7 @@ export default {
     login(){
         axios.post("ddd/login",{username:this.username,password:this.password}).then(res=>{
         	console.log("11111",res)
-
-
-        	document.cookie="username=this.username"
-        	document.cookie="password=this.password"        	
+     	
 	    }).catch(err=>{
    	 		console.log(err,"222222")
    	 	})
