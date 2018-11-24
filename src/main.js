@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import {getCookie} from './module/cookie.js'
 
 
 import ElementUI from 'element-ui';
