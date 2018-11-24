@@ -26,7 +26,6 @@ module.exports = {
             host:"10.2.157.108:3000",
             changeOrigin:true
         }
-        
        
     },
 

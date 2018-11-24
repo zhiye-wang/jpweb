@@ -3,7 +3,7 @@
 		<header id="header">
 			<div>
 				<input type="text" name="">
-				<router-link to='/change' tag='i' class="iconfont icon-fenlei"></router-link>	
+				<router-link to='/change' tag='i' class="iconfont icon-navlist"></router-link>	
 			</div>
 			
 		</header>
@@ -62,10 +62,10 @@
 					<span @click="handleClick()" :class="{'active':a===true}">精选专场</span>
 					<span @click="handleClick1()" :class="{'active':b===true}">精选单品</span>
 					<ul v-if="isShow"  v-infinite-scroll="loadMore"
-  infinite-scroll-disabled="loading"
-  infinite-scroll-immediate-check= "false"
-  infinite-scroll-distance="300">
-						<router-link to="/detail/:id" tag="li" v-for="data1 in datalist1" :key="data1.goods_id">
+						  infinite-scroll-disabled="loading"
+						  infinite-scroll-immediate-check= "false"
+						  infinite-scroll-distance= "0">
+						<router-link :to="'/detail/:'+ data1.goods_id" tag="li" v-for="data1 in datalist1" :key="data1.goods_id">
 							<img :src="data1.pic_url" alt="">
 							<p v-if="data1.coupon_tips">{{data1.coupon_tips}}</p>
 							<p v-else>{{data1.priceList[0].text}}</p>
@@ -74,10 +74,10 @@
 						</router-link>
 					</ul>
 					<ul v-else="isShow"  v-infinite-scroll="loadMore"
-  infinite-scroll-disabled="loading"
-  infinite-scroll-immediate-check= "false"
-  infinite-scroll-distance="300">
-						<router-link to="/detail/:id" tag="li" v-for="data1 in datalist1" :key="data1.goods_id">
+						  infinite-scroll-disabled="loading"
+						  infinite-scroll-immediate-check= "false"
+						  infinite-scroll-distance="0">
+						<router-link :to="'/detail/:'+ data1.goods_id"  tag="li" v-for="data1 in datalist1" :key="data1.goods_id">
 							<img :src="data1.pic_url" alt="">
 							<p v-if="data1.coupon_tips">{{data1.coupon_tips}}</p>
 							<p v-else>{{data1.priceList[0].text}}</p>
@@ -126,10 +126,14 @@ import "swiper/dist/css/swiper.css";
 			return{
 			datalist1:[],
 			datalist:[],
-			current:1,
+			current:0,
 			isShow:true,
 			a:true,
-			b:false
+			b:false,
+		    total:0,
+		    loading:false,
+
+      		
 			}
 		},
 		methods:{
@@ -161,8 +165,9 @@ import "swiper/dist/css/swiper.css";
 			},
 			loadMore(){
 		      
-
+			console.log(1111)
 		      this.current++;
+		      
 
 		      axios.get(`/api/getIndexNavSkip?page=${this.current}&zy_ids=p8_c4_l4&app_name=zhe&catname=newest_zhe`).then(res=>{
 		        console.log(res.data);

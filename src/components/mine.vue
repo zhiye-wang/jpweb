@@ -7,9 +7,9 @@
 			</div>
 			<div class="userBtm">
 				<!-- <router-link to="/register" tag="a" >注册</router-link> -->
-				<a href="http://10.2.157.108:3000/register">kerwim</a>
+				<a href="http://10.2.157.108:3000/register">注册</a>
 				<span>|</span>
-				<router-link to="https://m.juanpi.com/user/?select=4_1" tag="a" >登录</router-link>
+				<router-link to="/login" tag="a" >登录</router-link>
 			</div>
 			
 		</div>
@@ -45,23 +45,23 @@
 		</div>
 
 		<div class="return_pc">
-			<router-link to="a" tag="span" >返回首页</router-link>
-			<router-link to="a" tag="span" >客户端</router-link>
-			<router-link to="a" tag="span" >电脑版</router-link>
+			<router-link to="/home" tag="span" >返回首页</router-link>
+			<router-link to="javascript:;" tag="span" >客户端</router-link>
+			<router-link to="javascript:;" tag="span" >电脑版</router-link>
 		</div>
 		
 		<div class="footer">
 
 			<div class="fotter_info">
-				<router-link  to="i" class="iconfont icon-rfq" tag="p"></router-link>
+				<router-link  to="home" class="iconfont icon-rfq" tag="p"></router-link>
 				<span>首页</span>
 			</div>
 			<div class="fotter_info">
-				<router-link  to="i" class="iconfont icon-viewgallery" tag="p"></router-link>
+				<router-link  to="timeLimit" class="iconfont icon-viewgallery" tag="p"></router-link>
 				<span>分类</span>
 			</div>
 			<div class="fotter_info">
-				<router-link  to="i" class="iconfont icon-cart" tag="p"></router-link>
+				<router-link  to="/shoppingcart" class="iconfont icon-cart" tag="p"></router-link>
 				<span>购物车</span>
 			</div>
 			<div class="fotter_info">
@@ -109,6 +109,8 @@ a
 				text-align: center;
 				a{
 					padding:20px;
+					color:white;
+					 text-decoration:none
 				}
 				
 			}

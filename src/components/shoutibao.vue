@@ -1,12 +1,10 @@
 <template>
 	<div>
-		手提包
+		精选单品
 	</div>
 </template>
 
 <script>
-	export default {
-		name:'shoutibao'
-	}
+		
 
 </script>

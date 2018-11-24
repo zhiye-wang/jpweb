@@ -97,7 +97,17 @@
 		},
 		mounted(){
 			this.id=this.$route.params.id
+<<<<<<< HEAD
 			console.log("cookie",getCookie());
+=======
+			/*axios.get("/ddd/shoppingcart").then(res=>{
+				console.log("res")
+				console.log(res)
+			}).catch(err=>{
+				console.log("err");
+				console.log(err)
+			})*/
+>>>>>>> 186ff127c37b3d94ca83c42131e969abe512ce85
 			axios.get("/api/getMemberAboutInfo?goods_id="+this.id).then(res=>{
 				console.log(res.data.skudata)
 				this.data = res.data.skudata.info;
@@ -128,12 +138,17 @@
 			},
 			confirm(){
 				console.log("button")
+<<<<<<< HEAD
 				/*axios.get('/ddd/shoppingcart').then(res=>{
 					console.log("res")
 					console.log(res)
 				}).catch(err=>{
 					console.log(err);
 				})*/
+=======
+				
+
+>>>>>>> 186ff127c37b3d94ca83c42131e969abe512ce85
 				axios.post('/ddd/shoppingcart',{
 					username:"hanhan",
 					img:this.imgsrc,
