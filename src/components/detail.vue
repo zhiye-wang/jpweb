@@ -97,9 +97,9 @@
 		},
 		mounted(){
 			this.id=this.$route.params.id
-<<<<<<< HEAD
+
 			console.log("cookie",getCookie());
-=======
+
 			/*axios.get("/ddd/shoppingcart").then(res=>{
 				console.log("res")
 				console.log(res)
@@ -107,7 +107,7 @@
 				console.log("err");
 				console.log(err)
 			})*/
->>>>>>> 186ff127c37b3d94ca83c42131e969abe512ce85
+
 			axios.get("/api/getMemberAboutInfo?goods_id="+this.id).then(res=>{
 				console.log(res.data.skudata)
 				this.data = res.data.skudata.info;
@@ -138,17 +138,17 @@
 			},
 			confirm(){
 				console.log("button")
-<<<<<<< HEAD
+
 				/*axios.get('/ddd/shoppingcart').then(res=>{
 					console.log("res")
 					console.log(res)
 				}).catch(err=>{
 					console.log(err);
 				})*/
-=======
+
 				
 
->>>>>>> 186ff127c37b3d94ca83c42131e969abe512ce85
+
 				axios.post('/ddd/shoppingcart',{
 					username:"hanhan",
 					img:this.imgsrc,
@@ -178,20 +178,22 @@
 <style scoped lang="scss">
 .main{
 	background:#e2e4e7;
+	font-size:16px;
+
 }
 	img{width:100%;}
 	.intro{
-		width:365px; 
-		height:100px;
-		padding-left:10px;
-		line-height:40px;
+		width:3.65rem; 
+		height:1.00rem;
+		padding-left:0.10rem;
+		line-height:0.40rem;
 		background:white;
-		margin-bottom:8px;
+		margin-bottom:0.08rem;
 		.price{
 			color:red;
-			font-size:15px;
+			font-size:0.15rem;
 			.nowprice{
-				font-size:24px;
+				font-size:0.24rem;
 			}
 			.oprice{
 				color:grey;
@@ -204,18 +206,18 @@
 			}
 			.number{
 				float:right;
-				margin-right:25px;
+				margin-right:0.25rem;
 				color:grey;
 				font-size:14px;
 			}
 		}
 		.langname{
-			line-height:20px;
+			line-height:0.20rem;
 		}
 	}
 	footer{
 		width:100%;
-		height:50px;
+		height:0.50rem;
 		background:white;
 		position:fixed;
 		left:0;
@@ -226,46 +228,46 @@
 			color:grey;
 			border-right:1px solid lightgrey;
 			p{
-				line-height:25px;
+				line-height:0.25rem;
 			}
 			i{
-				line-height:25px;
+				line-height:0.25rem;
 			}
 		}
 		.footfirst{
-			width:70px;
+			width:0.70rem;
 			font-size:13px;
 		}
 		.footsecond{
-			width:70px;
+			width:0.70rem;
 		}
 		.footthird{
-			width:100px;
+			width:1.00rem;
 			p{
-				line-height:50px;
+				line-height:0.50rem;
 			}
 		}
 		.footfour{
-			width:130px;
+			width:1.30rem;
 			background:red;
 			color:white;
 			p{
-				line-height:50px;
+				line-height:0.50rem;
 			}
 		}
 	}
 	.promise{
-		height:45px;
-		line-height:40px;
+		height:0.45rem;
+		line-height:0.40rem;
 		background:white;
 		margin-bottom:8px;
 		p{
 			float:left;
-			margin-left:10px;
+			margin-left:0.10rem;
 			font-size:14px;
 			.dot{
 				color:red;
-				font-size:26px;
+				font-size:0.26rem;
 				display:inline-block;
 				transform:translateY(5px);
 			}
@@ -282,12 +284,12 @@
 		}
 	}
 	.choose{
-		height:45px;
+		height:0.45rem;
 		background:white;
 		display:flex;
 		margin-bottom:8px;
 		text-align:center;
-		line-height:40px;
+		line-height:0.40rem;
 		font-size:15px;
 		span{
 			display:inline-block;
@@ -304,29 +306,29 @@
 	}
 
 	.mystore{
-		height:45px;
+		height:0.45rem;
 		background:white;
-		margin-bottom:40px;
+		margin-bottom:0.40rem;
 		text-align:center;
-		line-height:40px;
-		font-size:15px;
+		line-height:0.40rem;
+		font-size:0.15rem;
 	}
 	.mainhandle{
 		width:100%;
-		height:670px;
+		height:6.70rem;
 		background:rgba(3,3,3,0.4);
 		position:absolute;
 		bottom:0px;
 		.handle{
 			position:fixed;
 			bottom:0px;
-			height:300px;
+			height:3.00rem;
 			background:white;
 			width:100%;
 			img{
-				width:100px;
-				height:100px;
-				transform:translateY(-40px);
+				width:1.00rem;
+				height:1.00rem;
+				transform:translateY(-0.40rem);
 			}
 			.first{
 				span{
@@ -350,36 +352,36 @@
 			background:red;
 			color:white;
 			font-size:20px;
-			line-height:50px;
+			line-height:0.50rem;
 			text-align:center;
 			position:fixed;
 			bottom:0;
 			width:100%;
-			height:50px;
+			height:0.50rem;
 		}
 	}
 	.buy{
 		float:left;
 		margin-left:10px;
 		font-size:20px;
-		margin-right:150px;
+		margin-right:1.50rem;
 	}
 	.do{
 		float:left;
-		width:30px;
+		width:0.30rem;
 		display:inline-block;
-		line-height:30px;
-		font-size:20px;
+		line-height:0.30rem;
+		font-size:0.20rem;
 		border:1px solid lightgrey;
 		text-align:center;
 		cursor:pointer;
 	}
 	.num{
 		float:left;
-		width:50px;
+		width:0.50rem;
 		display:inline-block;
-		line-height:30px;
-		font-size:20px;
+		line-height:0.30rem;
+		font-size:0.20rem;
 		border:1px solid lightgrey;
 		text-align:center;
 		cursor:pointer;

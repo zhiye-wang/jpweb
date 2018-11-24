@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="mainmain">
 		<div class="tttt" v-hello>
 			<div class="top" @click="mousedown">
 				<div class="head clear">
@@ -139,19 +139,24 @@
 
 <style scoped lang="scss">	
 
+.mainmain{
+	font-size:16px;
+}
+
 .top{
-	width:375px;
+	width:3.75rem;
 	 /* overflow:hidden; */
 	 position:fixed;
-	 z-index:10;  
+	 z-index:10; 
+	 background:black; 
 	} 
 	 .head{
-	 	padding-left:10px;
+	 	 padding-left:10px; 
 	 	width:195%;
-	 	height:40px;
+	 	height:0.40px;
 	 	background:black;
 	 	color:lightgrey;
-	 	line-height:40px;
+	 	line-height:0.40rem;
 	 	text-align:center;
 	 	position:relative;
 	 	top:0;
@@ -160,16 +165,17 @@
 	 	} */
 	 	div{
 	 		float:left;
-	 		height:40px;
+	 		height:0.40rem;
+	 		background:black;
 	 		p{
-	 			height:20px;
-	 			line-height:20px;
-	 			width:70px;
+	 			height:0.20rem;
+	 			line-height:0.20rem;
+	 			width:0.70rem;
 	 		}
 	 	}
 	 	.last{
-	 			width:150px;
-	 			line-height:40px;
+	 			width:1.50rem;
+	 			line-height:0.40rem;
 	 			color:white;
 	 		}
 	 }
@@ -179,31 +185,31 @@
 	 	content:"";
 	 }
 	 .mask{
-	 	width:70px;
-	 	height:40px;
+	 	width:0.70rem;
+	 	height:0.40rem;
 	 	background:rgba(255,0,0,0.5);
 	 	position:fixed;
 	 	left:42%;
 	 	top:0;
 	 	z-index:10;
-	 	line-height:20px;
+	 	line-height:0.20rem;
 	 	color:white;
 	 	text-align:center;
 	 }
 	 .tangle{
 	 	/* width:1px; */
 	 	/* height:1px; */
-	 	border-top:10px red solid;
-	 	border-left:10px white solid;
-	 	border-right:10px white solid;
-	 	border-bottom:10px white solid;
+	 	border-top:0.10rem red solid;
+	 	border-left:0.10rem white solid;
+	 	border-right:0.10rem white solid;
+	 	border-bottom:0.10rem white solid;
 	 	border-top-color:rgba(255,0,0,0.5);
 	 	border-left-color:rgba(255,255,255,0);
 	 	border-right-color:rgba(255,255,255,0);
 	 	border-bottom-color:rgba(255,255,255,0);
 	 	position:fixed;
 	 	left:48%;
-	 	top:40px;
+	 	top:0.40rem;
 	 	z-index:10;
 	 }
 	 .tttt{
@@ -217,43 +223,43 @@
 	 }
 	 .distance{
 	 	width:100%;
-	 	height:40px;
-	 	line-height:40px;
+	 	height:0.40rem;
+	 	line-height:0.40rem;
 	 	color:white;
-	 	font-size:13px;
+	 	font-size:0.13rem;
 	 	text-align:center;
 	 	color:black;
 	 	position:absolute;
-	 	top:40px;
+	 	top:0.40rem;
 	 }
 	 ul{
 	 	list-style:none;
 	 	width:100%;
-	 	padding-top:10px;
+	 	padding-top:0.10rem;
 	 	background:lightgrey;
 	 	position:absolute;
-	 	top:80px;
+	 	top:0.80rem;
 	 	li{
 	 		width:100%;
-	 		height:120px;
+	 		height:1.20rem;
 	 		background:white;
-	 		margin-bottom:1px;
-	 		img{width:100px;height:100px;margin-top:10px;float:left;display:block;}
+	 		margin-bottom:0.1rem;
+	 		img{width:1.00rem;height:1.00rem;margin-top:0.10rem;float:left;display:block;}
 	 		.right{
 	 			float:right;
-	 			width:250px;
+	 			width:2.50rem;
 	 			.intro{
-	 				height:50px;
-	 				line-height:18px;
-	 				margin-top:10px;
-	 				font-size:14px;
+	 				height:0.50rem;
+	 				line-height:0.18rem;
+	 				margin-top:0.10rem;
+	 				font-size:0.14rem;
 	 			}
 	 			.detail{
-	 				height:50px;
-	 				margin-top:10px;
+	 				height:0.50rem;
+	 				margin-top:0.10rem;
 	 				.detailLeft{
 	 					float:left;
-	 					width:160px;
+	 					width:1.60rem;
 	 					position:relative;
 	 					.price{
 	 						a{
@@ -261,38 +267,38 @@
 	 							color:red;
 								span{
 		 							color:red;
-		 							font-size:20px;
+		 							font-size:0.20rem;
 		 						}
 	 						}
 	 					}
 	 					.had{
-	 						width:140px;
-	 						height:13px;
+	 						width:1.40rem;
+	 						height:0.13rem;
 	 						background:pink;
-	 						margin-top:5px;
-	 						border-radius:5px;
+	 						margin-top:0.05rem;
+	 						border-radius:0.05rem;
 	 						text-align:center;
-	 						font-size:8px;
+	 						font-size:0.08rem;
 	 						color:white;
-	 						line-height:13px;
+	 						line-height:0.13rem;
 	 					}
 	 					.hadmask{
 	 						position:absolute;
-	 						height:13px;
-	 						bottom:0px;
-	 						border-radius:5px;
+	 						height:0.13rem;
+	 						bottom:0rem;
+	 						border-radius:0.05rem;
 	 					}
 	 				}
 	 				.detailRight{
-	 					height:30px;
+	 					height:0.30rem;
 	 					float:right;
-	 					width:70px;
+	 					width:0.70rem;
 	 					background:red;
-	 					margin-right:20px;
+	 					margin-right:0.20rem;
 	 					color:white;
-	 					font-size:15px;
+	 					font-size:0.15rem;
 	 					text-align:center;
-	 					line-height:30px;
+	 					line-height:0.30rem;
 	 				}
 	 			}
 	 		}

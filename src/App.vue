@@ -27,4 +27,5 @@ margin-top: 60px; */
 body,html,div,p,ul,a,span{
   margin:0;padding:0;
 }
+html{font-size:26.667vw;}
 </style>
