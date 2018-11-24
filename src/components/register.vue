@@ -34,6 +34,7 @@ import axios from 'axios'
 					axios.post('ddd/register',{username:this.username,password:this.password}).then((res)=>{
 						console.log('成功')
 					})
+					location.href="/login"
 			}
 		}
 	}

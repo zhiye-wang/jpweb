@@ -59,6 +59,7 @@ export default {
         axios.post("ddd/login",{username:this.username,password:this.password}).then(res=>{
         	console.log("11111",res)
         	setCookie("username",this.username);
+        	location.href="/home"
      	
 	    }).catch(err=>{
    	 		console.log(err,"222222")

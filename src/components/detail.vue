@@ -41,14 +41,14 @@
 		<footer>
 			<div class="footfirst">
 				<i class="iconfont icon-store"></i>
-				<p>首页</p>
+				<p @click="return_home">首页</p>
 			</div>
 			<div class="footsecond">
 				<i class="iconfont icon-cart"></i>
 				<p>购物车</p>
 			</div>
 			<div class="footthird">
-				<p>立即购买</p>
+				<p @click="handleclick">立即购买</p>
 			</div>
 
 			
@@ -98,9 +98,9 @@
 		},
 		mounted(){
 			this.id=this.$route.params.id
-<<<<<<< HEAD
+
 			console.log("cookie",getCookie());
-=======
+
 			/*axios.get("/ddd/shoppingcart").then(res=>{
 				console.log("res")
 				console.log(res)
@@ -108,7 +108,7 @@
 				console.log("err");
 				console.log(err)
 			})*/
->>>>>>> 186ff127c37b3d94ca83c42131e969abe512ce85
+
 			axios.get("/api/getMemberAboutInfo?goods_id="+this.id).then(res=>{
 				console.log(res.data.skudata)
 				this.data = res.data.skudata.info;
@@ -133,6 +133,7 @@
 		methods:{
 			handleclick(){
 				this.showing = true
+				
 			},
 			notshowing(){
 				this.showing = false
@@ -141,7 +142,7 @@
 				console.log("button")
 				
 
->>>>>>> 186ff127c37b3d94ca83c42131e969abe512ce85
+
 				axios.post('/ddd/shoppingcart',{
 					username:getCookie(),
 					img:this.imgsrc,
@@ -153,6 +154,7 @@
 				}).catch(err=>{
 					console.log(err);
 				})
+				location.href="/shoppingcart"
 			},
 			adding(){
 				this.num++;
@@ -164,6 +166,9 @@
 					this.num--;
 				}
 				
+			},
+			return_home(){
+				location.href="/home"
 			}
 		}
 	}
