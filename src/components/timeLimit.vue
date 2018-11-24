@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div class="tttt" v-hello>
-			<div class="top" >
+			<div class="top" @click="mousedown">
 				<div class="head clear">
 					<div>精选好货，底价狂欢</div>
 					<div class="time" v-for="time in timelist" >
@@ -11,7 +11,10 @@
 					<div class="last">持续上新，不要走开</div>
 				</div>
 			</div>
-			<div class="mask"></div>
+			<div class="mask">
+				<!-- <p>{{timelist[0]}}:00</p>
+				<p>以开抢</p> -->
+			</div>
 			<div class="tangle"></div>		
 		</div>
 		<p class="distance">--离本场结束只剩{{havedate}}</p>
@@ -45,13 +48,22 @@
 		inserted(el){
 			el.onmousedown = function(evt){
 				var downX = evt.clientX;
-				console.log("down",downX)
+
+				var left = Math.floor((downX-144)/70)*70;
+				//console.log("left",left)
+				/*console.log("down",downX)
 				window.onmousemove = function(evt){
 					console.log("move",evt.clientX)
 				}
 				window.onmouseup = function(evt){
 					console.log("up")
+				}*/
+				if(downX<160){
+					left = 0
 				}
+				var pa = document.querySelector('.tttt');
+				pa.style.marginLeft =-left+'px';
+				pa.style.transition = "all 0.5s"
 			}
 
 		}
@@ -76,12 +88,15 @@
 				count:0,
 				loading:false,
 				total:0,
-				complete:"正在加载中..."
+				complete:"正在加载中...",
+				now:0
 			}
 		},
 		methods:{
-			mousedown(evt){
-				
+			mousedown(){
+				console.log("click");
+				this.now++;
+				console.log(this.now);  //bug??
 			},
 			loadMore(){
 				console.log("daodile");
@@ -100,8 +115,8 @@
 		},
 		mounted(){
 			axios.get("/act/timebuy-xrgoodslist").then(res=>{
-				
-				this.datalist = res.data.data.time_tabs[0].goodslist
+				console.log("now",this.now)
+				this.datalist = res.data.data.time_tabs[this.now].goodslist
 				this.total = res.data.data.time_tabs.length
 				//console.log(this.datalist)
 			}).catch(err=>{
@@ -116,7 +131,7 @@
 
 .top{
 	width:375px;
-	 overflow:hidden;
+	 /* overflow:hidden; */
 	 position:fixed;
 	 z-index:10;  
 	} 
@@ -128,6 +143,11 @@
 	 	color:lightgrey;
 	 	line-height:40px;
 	 	text-align:center;
+	 	position:relative;
+	 	top:0;
+	 	/* .time{
+	 		position:absolute;
+	 	} */
 	 	div{
 	 		float:left;
 	 		height:40px;
@@ -156,6 +176,9 @@
 	 	left:42%;
 	 	top:0;
 	 	z-index:10;
+	 	line-height:20px;
+	 	color:white;
+	 	text-align:center;
 	 }
 	 .tangle{
 	 	/* width:1px; */
@@ -177,6 +200,10 @@
 	 	position:absolute;
 	 	left:0;
 	 	top:0;
+	 	background:black;
+	 	.time{
+	 		background:black;
+	 	}
 	 }
 	 .distance{
 	 	width:100%;
