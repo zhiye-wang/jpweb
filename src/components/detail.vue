@@ -79,9 +79,9 @@
 
 <script>
 	import axios from "axios"
+	import {getCookie} from "../module/cookie.js"
 	/*import Swiper from "swiper"
 	import "swiper/dist/css/swiper.css"*/
-	import {getCookie} from "../module/cookie.js"
 	export default {
 		name:'detail',
 		data(){
@@ -91,12 +91,16 @@
 				name:null,
 				imgsrc:null,
 				showing:false,
-				num:0
+				
+				num:0,
+				username:null
 			}
 		},
 		mounted(){
 			this.id=this.$route.params.id
-			console.log("now",getCookie())
+<<<<<<< HEAD
+			console.log("cookie",getCookie());
+=======
 			/*axios.get("/ddd/shoppingcart").then(res=>{
 				console.log("res")
 				console.log(res)
@@ -104,6 +108,7 @@
 				console.log("err");
 				console.log(err)
 			})*/
+>>>>>>> 186ff127c37b3d94ca83c42131e969abe512ce85
 			axios.get("/api/getMemberAboutInfo?goods_id="+this.id).then(res=>{
 				console.log(res.data.skudata)
 				this.data = res.data.skudata.info;
@@ -136,6 +141,7 @@
 				console.log("button")
 				
 
+>>>>>>> 186ff127c37b3d94ca83c42131e969abe512ce85
 				axios.post('/ddd/shoppingcart',{
 					username:getCookie(),
 					img:this.imgsrc,

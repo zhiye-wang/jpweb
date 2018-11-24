@@ -96,7 +96,18 @@
 			mousedown(){
 				console.log("click");
 				this.now++;
-				console.log(this.now);  //bug??
+				if(this.now>=3){
+					this.now = 0
+					return ;
+				}
+				axios.get("/act/timebuy-xrgoodslist").then(res=>{
+					console.log("now",this.now);  
+					this.datalist = res.data.data.time_tabs[this.now].goodslist
+					this.total = res.data.data.time_tabs.length
+					//console.log(this.datalist)
+				}).catch(err=>{
+					console.log(err);
+				})
 			},
 			loadMore(){
 				console.log("daodile");
@@ -115,14 +126,13 @@
 		},
 		mounted(){
 			axios.get("/act/timebuy-xrgoodslist").then(res=>{
-				console.log("now",this.now)
+				
 				this.datalist = res.data.data.time_tabs[this.now].goodslist
 				this.total = res.data.data.time_tabs.length
 				//console.log(this.datalist)
 			}).catch(err=>{
 				console.log(err);
 			})
-
 		}
 	}
 </script>

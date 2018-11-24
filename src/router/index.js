@@ -21,6 +21,7 @@ import timeLimit from '../components/timeLimit.vue'
 import Login from '../components/login.vue'
 import register from '../components/register.vue'
 
+
 Vue.use(Router)
 
 export default new Router({
@@ -90,8 +91,7 @@ export default new Router({
     },{
       path:'/timeLimit',
       component:timeLimit
-    },,{
-      path:'/login',
+    },{      path:'/login',
       component:Login
     },{
     	path:'/register',
